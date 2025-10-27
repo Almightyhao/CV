@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>曾浩宸 (Hao Chen Tseng) | 個人網站</title>
+    <meta name="description" content="曾浩宸 (Hao Chen Tseng) - 國防醫學大學藥學系，專長於基因體學、生物資訊與機器學習，研究領域包含青光眼與男性不孕症。">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #0d47a1; /* 深藍色，源自國防醫學院徽章 */
+            --secondary-color: #b71c1c; /* 紅色，點綴 */
+            --text-dark: #202124;
+            --text-medium: #5f6368;
+            --text-light: #f8f9fa;
+            --bg-white: #ffffff;
+            --bg-light: #f8f9fa;
+            --border-light: #e0e0e0;
+            --shadow: 0 4px 12px rgba(0,0,0,0.08);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans TC', sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--bg-white);
+            overflow-x: hidden;
+        }
+
+        /* --- 導覽列 Navigation --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-light);
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px; /* Reduced gap slightly for more items */
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-medium);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+            font-size: 0.95rem; /* Slightly smaller font size */
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after, .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .nav-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-dark);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        /* --- 主要容器 --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding-top: 100px; /* 70px navbar + 30px padding */
+            padding-bottom: 70px;
+        }
+        
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--secondary-color);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        /* --- 英雄區域 (Hero) --- */
+        #hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding-top: 70px; /* Offset for navbar */
+            background: linear-gradient(135deg, var(--bg-light) 0%, #e3f2fd 100%);
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--text-medium);
+            margin-bottom: 30px;
+        }
+        
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tag {
+            background: rgba(13, 71, 161, 0.1);
+            color: var(--primary-color);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid var(--bg-white);
+            box-shadow: var(--shadow);
+            justify-self: center;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+            margin-top: 30px;
+        }
+        
+        .btn-primary:hover {
+            background: #0d3c80;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(13, 71, 161, 0.3);
+        }
+
+        /* --- 關於我 (About) --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-text p {
+            font-size: 1.1rem;
+            color: var(--text-medium);
+            margin-bottom: 20px;
+        }
+        
+        .about-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+        
+        .about-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+        
+        .about-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        /* *** Style for the research plan item *** */
+        .research-plan-item {
+            padding-left: 30px;
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+        .research-plan-item strong {
+             display: block; /* Make the title block-level */
+             margin-bottom: 5px; /* Add some space below the title */
+        }
+        .research-plan-item .plan-title {
+             display: block; /* Ensure the title starts on a new line */
+             margin-left: 0; /* Align with the list */
+             padding-left: 0; /* Reset padding if any */
+             line-height: 1.4; /* Adjust line height for readability */
+        }
+        
+        .about-image {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        /* --- 研究成果 (Research) --- */
+        #research {
+            background: var(--bg-light);
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--border-light);
+            border-radius: 2px;
+        }
+        
+        .timeline-item {
+            padding: 30px 40px;
+            position: relative;
+            width: 50%;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            padding-right: 70px;
+            text-align: right;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: 70px;
+            text-align: left;
+        }
+        
+        .timeline-dot {
+            content: '';
+            position: absolute;
+            top: 35px;
+            width: 20px;
+            height: 20px;
+            background: var(--secondary-color);
+            border: 4px solid var(--bg-light);
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -10px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -10px;
+        }
+        
+        .timeline-content {
+            background: var(--bg-white);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .timeline-date {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 8px;
+        }
+        
+        .timeline-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-role {
+            font-style: italic;
+            font-weight: 500;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .timeline-desc {
+            font-size: 0.95rem;
+            color: var(--text-medium);
+        }
+        
+        /* --- 海報與簡報 (Posters) --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .gallery-item {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 30px 20px 20px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            opacity: 1;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            opacity: 1;
+        }
+
+        /* --- 技能與經歷 (Skills & Experience) --- */
+        #skills {
+            background: var(--bg-light);
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .skill-category {
+            background: var(--bg-white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--primary-color);
+        }
+        
+        .skill-category h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .skill-list {
+            list-style: none;
+        }
+        
+        .skill-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+            color: var(--text-medium);
+        }
+        
+        .skill-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.2rem;
+            top: -3px;
+        }
+        
+        /* --- 個人專案 (Projects) --- */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-item {
+            background: var(--bg-white);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            padding: 30px;
+            text-align: center;
+            transition: var(--transition);
+            text-decoration: none;
+            color: var(--text-dark);
+            border-bottom: 4px solid var(--primary-color);
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+        }
+        
+        .project-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .project-item h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .project-item p {
+            font-size: 1rem;
+            color: var(--text-medium);
+            flex-grow: 1; 
+            margin-bottom: 20px; 
+        }
+        
+        .project-item span { /* Style for the "前往專案" link text */
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+
+        /* --- 證照與獎項 (Certificates) --- */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .cert-item {
+            text-align: center;
+        }
+        
+        .cert-item img {
+            width: 100%;
+            height: 260px; /* Gave a fixed height for alignment */
+            object-fit: cover; /* Cover to fit the box */
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .cert-item:hover img {
+             box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+             transform: scale(1.03);
+        }
+        
+        .cert-item h4 {
+            margin-top: 15px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .cert-link {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .awards-list {
+            max-width: 800px;
+            margin: 40px auto 0;
+            background: var(--bg-light);
+            padding: 30px;
+            border-radius: 12px;
+        }
+        
+        .awards-list h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .awards-list ul {
+            list-style: none;
+            text-align: center;
+        }
+        
+        .awards-list li {
+            color: var(--text-medium);
+            font-weight: 500;
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+        }
+
+        /* --- 聯絡我 (Contact) --- */
+        #contact {
+            text-align: center;
+            background: var(--primary-color);
+            color: var(--text-light);
+        }
+        
+        #contact .section-title {
+            color: var(--text-light);
+        }
+        
+        #contact .section-title::after {
+            background: var(--text-light);
+        }
+        
+        #contact p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            color: #e3f2fd;
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-links a {
+            color: var(--primary-color);
+            background: var(--bg-white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 12px 25px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+        
+        .contact-links a:hover {
+            background: var(--bg-light);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+        }
+
+        /* --- 頁尾 (Footer) --- */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--text-dark);
+            color: var(--text-medium);
+        }
+        
+        .footer p {
+            font-size: 0.9rem;
+        }
+
+        /* --- 回到頂部按鈕 --- */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: var(--transition);
+            z-index: 998;
+        }
+        
+        .back-to-top:hover {
+            background: #0d3c80;
+        }
+        
+        .back-to-top.visible {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- 燈箱 (Lightbox) --- */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1001;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            cursor: pointer;
+        }
+
+        .lightbox img {
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 8px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        /* --- 響應式設計 (RWD) --- */
+        @media (max-width: 992px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-image {
+                grid-row: 1; /* 圖片移到上方 */
+                max-width: 300px;
+                height: 300px;
+                margin-bottom: 30px;
+            }
+            
+            .hero-tags {
+                justify-content: center;
+            }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                margin-top: 30px;
+            }
+            
+            .skills-grid, .cert-grid, .project-grid { 
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline::before {
+                left: 20px;
+                transform: none;
+            }
+            
+            .timeline-item, .timeline-item:nth-child(even) {
+                width: 100%;
+                left: 0;
+                padding-left: 50px;
+                padding-right: 0;
+                text-align: left;
+            }
+            
+            .timeline-dot, .timeline-item:nth-child(odd) .timeline-dot, .timeline-item:nth-child(even) .timeline-dot {
+                left: 10px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px; /* navbar 高度 */
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links a {
+                padding: 10px;
+                text-align: center;
+            }
+            
+            .nav-toggle {
+                display: flex;
+            }
+            
+            .nav-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 6px);
+            }
+            
+            .nav-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .nav-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -6px);
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-text .subtitle {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* --- 列印樣式 (Print) --- */
+        @media print {
+            .navbar, .back-to-top, .contact-links, .btn, .project-item {
+                display: none !important;
+            }
+            
+            body {
+                font-size: 12pt;
+                color: #000;
+                background: #fff;
+            }
+            
+            .section {
+                padding: 40px 0;
+                page-break-inside: avoid;
+            }
+            
+            .section-title {
+                font-size: 20pt;
+                color: #000;
+                text-align: left;
+                margin-bottom: 20px;
+            }
+            
+            .section-title::after {
+                display: none;
+            }
+            
+            #hero {
+                min-height: auto;
+                background: none;
+            }
+            
+            .hero-content, .about-grid, .skills-grid, .cert-grid, .project-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-image, .about-image, .gallery-item, .cert-item {
+                display: none; /* 節省墨水 */
+            }
+            
+            .timeline::before {
+                left: 0;
+            }
+            
+            .timeline-item, .timeline-item:nth-child(even) {
+                width: 100%;
+                left: 0;
+                padding: 10px 0 10px 20px;
+                text-align: left;
+            }
+            
+            .timeline-dot {
+                left: -5px;
+                width: 10px;
+                height: 10px;
+            }
+            
+            .timeline-content {
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
+            
+            #contact {
+                background: none;
+                color: #000;
+            }
+            
+            #contact .section-title, #contact p {
+                color: #000;
+            }
+            
+            .footer {
+                background: none;
+                color: #000;
+                page-break-before: always;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">曾浩宸 Hao Chen Tseng</a>
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#about" class="nav-link">關於我</a></li>
+                <li><a href="#research" class="nav-link">研究成果</a></li>
+                <li><a href="#gallery" class="nav-link">海報簡報</a></li>
+                <li><a href="#skills" class="nav-link">技能與經歷</a></li>
+                <li><a href="#projects" class="nav-link">個人專案</a></li> <li><a href="#certificates" class="nav-link">證照與獎項</a></li>
+                <li><a href="#contact" class="nav-link">聯絡我</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+
+        <section id="hero" class="section">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <h1>曾浩宸<br>Hao Chen Tseng</h1>
+                    <p class="subtitle">藥學系學生 | 基因體學研究者 | 生物資訊與機器學習</p>
+                    <div class="hero-tags">
+                        <span class="tag">#藥學</span>
+                        <span class="tag">#基因體學</span>
+                        <span class="tag">#生物資訊</span>
+                        <span class="tag">#機器學習</span>
+                        <span class="tag">#青光眼 (POAG)</span>
+                        <span class="tag">#男性不孕症</span>
+                    </div>
+                    <a href="#contact" class="btn btn-primary">聯絡我</a>
+                </div>
+                <img src="S__17702918.jpg" alt="曾浩宸個人照片" class="hero-image">
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-title">關於我</h2>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>我就讀於國防醫學大學藥學系 (2020-2025)，奠定了紮實的藥理學基礎。自大二時，我加入了黃攸娟副教授的實驗室 (2022-2025)，從事基因體學研究，專注於全外顯子定序 (WES) 分析與致病基因預測模型建立。</p>
+                        <p>在研究歷程中，我致力於結合生物資訊與機器學習方法，深入探討青光眼及男性不孕症的遺傳機制。這三年的研究經驗使我擁有了獨立思考與解決問題的能力，並能主動找尋資源自我精進。</p>
+                        <ul class="about-list">
+                            <li><strong>學歷:</strong> 國防醫學大學藥學系 (2020-2025)</li>
+                            <li><strong>資格:</strong> 藥師第一階段國考及格</li>
+                            <li><strong>研究室:</strong> 黃攸娟副教授實驗室 (2022-2025)</li>
+                            <li class="research-plan-item"> 
+                                <strong>研究計畫:</strong> 
+                                <span class="plan-title">
+                                    113年度 國科會大專學生研究計畫：<br>
+                                    全外顯⼦定序分析探討台灣家族性原發隅⾓開放型⻘光眼<br>
+                                    易感基因基因傾向
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <img src="178D6D78-9FA6-4251-A7D9-05CEB35D9CFC.JPG" alt="曾浩宸海報發表照片" class="about-image">
+                </div>
+            </div>
+        </section>
+
+        <section id="research" class="section">
+            <div class="container">
+                <h2 class="section-title">論文與研究成果</h2>
+                <div class="timeline">
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">2023年10月</div>
+                            <h3 class="timeline-title">A Comprehensive Genetic Study of Microtubule-Associated Gene Clusters for Male Infertility in a Taiwanese Cohort</h3>
+                            <div class="timeline-role">第三作者</div>
+                            <p class="timeline-desc">
+                                於 2024 台灣生殖醫學會年會發表。
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">2024年 6月-7月</div>
+                            <h3 class="timeline-title">IPSF 亞太藥學年會 (APPS)</h3>
+                            <div class="timeline-role">國內學生代表 (泰國清萊)</div>
+                            <p class="timeline-desc">
+                                參與於泰國清邁舉行之國際藥學學生交流活動。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">2024年8月</div>
+                            <h3 class="timeline-title">Activation of the ROCK/MYLK Pathway Affects Complex Molecular and Morphological Changes of the Trabecular Meshwork Associated With Ocular Hypertension</h3>
+                            <div class="timeline-role">第三作者</div>
+                            <p class="timeline-desc">
+                                於 2024 軍醫大會發表。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">審查中 (Under Review)</div>
+                            <h3 class="timeline-title">Exome-Based Machine Learning in Two-Affected-Generation Families Identifies Pathogenic SNPs in Early-Onset Primary Open-Angle Glaucoma</h3>
+                            <div class="timeline-role">第一作者</div>
+                            <p class="timeline-desc">
+                                於 2025 台北醫學大學臨床醫學研究所研討會發表。
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        
+        <section id="gallery" class="section">
+            <div class="container">
+                <h2 class="section-title">海報與簡報</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="IMG_9025.jpg" alt="POAG 機器學習研究口頭簡報">
+                        <div class="gallery-caption">POAG 機器學習研究口頭簡報 (藥學系研討會)</div>
+                    </div>
+                    
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="IMG_9023.JPG" alt="高眼壓藥物機轉研究海報">
+                        <div class="gallery-caption">高眼壓藥物機轉研究海報 (2024 軍醫大會)</div>
+                    </div>
+                    
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="S__17702920.jpg" alt="2024 亞太藥學年會 (APPS) 團體照">
+                        <div class="gallery-caption">2024 亞太藥學年會 (APPS) 團體照 (泰國清邁)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+            <div class="container">
+                <h2 class="section-title">技能與實習</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>研究與生物資訊技能</h3>
+                        <ul class="skill-list">
+                            <li>CLC Genomics Workbench</li>
+                            <li>Ingenuity Pathway Analysis (IPA)</li>
+                            <li>PCR / DNA 凝膠電泳</li>
+                            <li>TanBead 核酸萃取儀器操作</li>
+                            <li>機器學習 (Python)</li>
+                            <li>全外顯子定序 (WES) 分析</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>藥學實習經歷</h3>
+                        <ul class="skill-list">
+                            <li>三軍總醫院 臨床藥學部</li>
+                            <li>順天堂藥廠 (中藥炮製成分分析)</li>
+                            <li>赫得藥局</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <div class="container">
+                <h2 class="section-title">個人專案</h2>
+                <div class="project-grid">
+                    <a href="https://almightyhao.github.io/Storage-Code-Finding/" target="_blank" rel="noopener noreferrer" class="project-item">
+                        <h3>三總門診儲位表查詢 App</h3>
+                        <p>為提升藥局工作效率而開發的網頁應用程式，方便快速查詢藥品儲位。</p>
+                        <span>前往專案 &rarr;</span>
+                    </a>
+                    <a href="https://almightyhao.github.io/SOAP-writter/" target="_blank" rel="noopener noreferrer" class="project-item">
+                        <h3>智慧藥師 SOAP 筆記產生器</h3>
+                        <p>基於臨床指引，協助藥師快速生成結構化 SOAP (主觀、客觀、評估、計畫) 筆記的工具。</p>
+                        <span>前往專案 &rarr;</span>
+                    </a>
+                    <a href="https://almightyhao.github.io/TCM-test/" target="_blank" rel="noopener noreferrer" class="project-item">
+                        <h3>中藥材辨認練習題庫</h3>
+                        <p>提供中藥材圖片辨識練習功能，輔助學習與記憶中藥外觀特徵。</p>
+                        <span>前往專案 &rarr;</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="certificates" class="section">
+            <div class="container">
+                <h2 class="section-title">證照與獎項</h2>
+                <div class="cert-grid">
+                    <div class="cert-item" onclick="openLightbox(this)">
+                        <img src="IMG_8924.PNG" alt="Google Cloud 數位人才探索學程證書">
+                        <h4>Google Cloud 數位人才探索學程 (2025)</h4>
+                    </div>
+                    
+                    <a href="Google.pdf" target="_blank" rel="noopener noreferrer" class="cert-link">
+                        <div class="cert-item">
+                            <img src="IMG_8924.PNG" alt="Gemini Certified Educator 證書 (點擊查看 PDF)">
+                            <h4>Gemini Certified Educator (2025-2028)</h4>
+                        </div>
+                    </a>
+
+                    <a href="34RD_B-0034_ Mr. Hao-Chen Tseng.pdf" target="_blank" rel="noopener noreferrer" class="cert-link">
+                        <div class="cert-item">
+                            <img src="S__17702920.jpg" alt="2024 亞太藥學年會 (APPS) 參與證書 (點擊查看 PDF)">
+                            <h4>2024 亞太藥學年會 (APPS) 參與證書</h4>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="awards-list">
+                    <h3>獎學金與檢定</h3>
+                    <ul>
+                        <li>劉孔樂先生成績優良獎學金</li>
+                        <li>台灣百靈佳殷格翰藥學系成績優秀獎學金</li>
+                        <li>TOEFL ITP 617分</li>
+                        <li>TOEIC 910分</li>
+                        <li>ALCPT 95分</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="container">
+                <h2 class="section-title">聯絡我</h2>
+                <p>若您對我的研究感興趣，或有任何學術交流、合作機會，歡迎透過以下方式與我聯繫。</p>
+                <div class="contact-links">
+                    <a href="mailto:409030002@mail.ndmctsgh.edu.tw">Email</a>
+                    <a href="https://linkedin.com/in/your-profile" target="_blank">LinkedIn</a> <a href="https://orcid.org/0009-0007-0367-3269" target="_blank">ORCID</a> </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 曾浩宸 (Hao Chen Tseng). All rights reserved.</p>
+    </footer>
+
+    <button class="back-to-top" id="back-to-top" aria-label="回到頂部" onclick="scrollToTop()">
+        &uarr;
+    </button>
+
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <button class="lightbox-close" aria-label="關閉燈箱" onclick="closeLightbox()">&times;</button>
+        <img id="lightbox-img" src="" alt="放大的圖片">
+    </div>
+
+    <script>
+        // --- 導覽列 & 錨點滾動 ---
+        const navToggle = document.getElementById('nav-toggle');
+        const navLinks = document.getElementById('nav-links');
+        const navLinkItems = document.querySelectorAll('.nav-link');
+
+        // 漢堡選單開關
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // 點擊連結後關閉漢堡選單
+        navLinkItems.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    const offsetTop = targetSection.offsetTop - 70; // 扣除導覽列高度
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+                
+                // 關閉選單
+                navToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // --- 回到頂部按鈕 ---
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // --- 燈箱 (Lightbox) ---
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        function openLightbox(element) {
+            // 檢查點擊的元素或其父元素是否為 <a> 連結
+            if (element.tagName === 'A' || element.closest('a')) {
+                return; // 如果是連結，則不開啟燈箱，讓連結正常運作
+            }
+
+            const img = element.querySelector('img');
+            if (img) {
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                lightbox.style.display = 'flex';
+                document.body.style.overflow = 'hidden'; // 禁止背景滾動
+            }
+        }
+
+        function closeLightbox() {
+            lightbox.style.display = 'none';
+            document.body.style.overflow = 'auto'; // 恢復背景滾動
+        }
+        
+        // 點擊 Esc 鍵關閉燈箱
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+
+    </script>
+</body>
+</html>
