@@ -266,21 +266,20 @@
             font-size: 1.2rem;
         }
         
-        /* *** Style for the research plan item *** */
         .research-plan-item {
             padding-left: 30px;
             margin-bottom: 15px;
             font-size: 1.05rem;
         }
         .research-plan-item strong {
-             display: block; /* Make the title block-level */
-             margin-bottom: 5px; /* Add some space below the title */
+             display: block; 
+             margin-bottom: 5px; 
         }
         .research-plan-item .plan-title {
-             display: block; /* Ensure the title starts on a new line */
-             margin-left: 0; /* Align with the list */
-             padding-left: 0; /* Reset padding if any */
-             line-height: 1.4; /* Adjust line height for readability */
+             display: block; 
+             margin-left: 0; 
+             padding-left: 0; 
+             line-height: 1.4; 
         }
         
         .about-image {
@@ -389,7 +388,11 @@
             color: var(--text-medium);
         }
         
-        /* --- 海報與簡報 (Posters) --- */
+        /* --- *** UPDATED SECTION ID *** --- */
+        #participation { 
+            background: var(--bg-white); /* Changed background for differentiation */
+        }
+        
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -911,9 +914,10 @@
             <ul class="nav-links" id="nav-links">
                 <li><a href="#about" class="nav-link">關於我</a></li>
                 <li><a href="#research" class="nav-link">研究成果</a></li>
-                <li><a href="#gallery" class="nav-link">海報簡報</a></li>
+                <li><a href="#participation" class="nav-link">研討會參與</a></li> 
                 <li><a href="#skills" class="nav-link">技能與經歷</a></li>
-                <li><a href="#projects" class="nav-link">個人專案</a></li> <li><a href="#certificates" class="nav-link">證照與獎項</a></li>
+                <li><a href="#projects" class="nav-link">個人專案</a></li> 
+                <li><a href="#certificates" class="nav-link">證照與獎項</a></li>
                 <li><a href="#contact" class="nav-link">聯絡我</a></li>
             </ul>
         </div>
@@ -948,7 +952,7 @@
                         <p>我就讀於國防醫學大學藥學系 (2020-2026)，奠定了紮實的藥理學基礎。自大二時，我加入了黃攸娟副教授的實驗室 (2022-2025)，從事基因體學研究，專注於全外顯子定序 (WES) 分析與致病基因預測模型建立。</p>
                         <p>在研究歷程中，我致力於結合生物資訊與機器學習方法，深入探討青光眼及男性不孕症的遺傳機制。這三年的研究經驗使我擁有了獨立思考與解決問題的能力，並能主動找尋資源自我精進。</p>
                         <ul class="about-list">
-                            <li><strong>學歷:</strong> 國防醫學大學藥學系 (2020-2025)</li>
+                            <li><strong>學歷:</strong> 國防醫學大學藥學系 (2020-2026)</li>
                             <li><strong>資格:</strong> 藥師第一階段國考及格</li>
                             <li><strong>研究室:</strong> 黃攸娟副教授實驗室 (2022-2025)</li>
                             <li class="research-plan-item"> 
@@ -1023,25 +1027,26 @@
             </div>
         </section>
         
-        <section id="gallery" class="section">
+        <section id="participation" class="section">
             <div class="container">
-                <h2 class="section-title">海報與簡報</h2>
+                <h2 class="section-title">研討會與國際參與</h2>
                 <div class="gallery-grid">
                     <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="409030002 曾浩宸_pages-to-jpg-0001.jpg" alt="二代POAG家族機器學習預測模型">
-                        <div class="gallery-caption">二代POAG家族機器學習預測模型口頭壁報 (2025 台北醫學大學臨床醫學研究所研討會)</div>
+                        <img src="409030002 曾浩宸_pages-to-jpg-0001.jpg" alt="二代POAG家族機器學習預測模型口頭壁報">
+                        <div class="gallery-caption">二代POAG家族機器學習預測模型口頭壁報 (2025 北醫大臨床醫學研究所研討會)</div>
                     </div>
                     
                     <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="IMG_9023.jpg" alt="POAG雙靶點抑制劑研究海報">
+                         <img src="IMG_9023.jpg" alt="POAG雙靶點抑制劑研究海報">
                         <div class="gallery-caption">POAG雙靶點抑制劑研究海報 (2024 軍醫大會)</div>
                     </div>
                     
                     <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="S__17702920.jpg" alt="2024 亞太藥學年會 (APPS) 團體照">
-                        <div class="gallery-caption">2024 亞太藥學年會 (APPS) 團體照 (泰國清邁)</div>
+                         <img src="IMG_9022.jpg" alt="男性不孕症基因研究海報">
+                        <div class="gallery-caption">男性不孕症基因研究海報 (2024 台灣生殖醫學會年會)</div>
                     </div>
-                </div>
+                    
+                    </div>
             </div>
         </section>
 
@@ -1106,14 +1111,14 @@
                     
                     <a href="Google_page-0001.jpg" target="_blank" rel="noopener noreferrer" class="cert-link">
                         <div class="cert-item">
-                            <img src="Google_page-0001.jpg" alt="Gemini Certified Educator 證書 ">
+                            <img src="Google_page-0001.jpg" alt="Gemini Certified Educator 證書 (點擊查看)">
                             <h4>Gemini Certified Educator (2025-2028)</h4>
                         </div>
                     </a>
 
-                    <a href="34RD_B-0034_ Mr Hao-Chen Tseng.jpg" target="_blank" rel="noopener noreferrer" class="cert-link">
+                    <a href="34RD_B-0034_ Mr Hao-Chen Tseng.png" target="_blank" rel="noopener noreferrer" class="cert-link">
                         <div class="cert-item">
-                            <img src="S__17702920.jpg" alt="2024 亞太藥學年會 (APPS) 參與證書 (點擊查看 PDF)">
+                            <img src="S__17702920.jpg" alt="2024 亞太藥學年會 (APPS) 參與證書 (點擊查看)">
                             <h4>2024 亞太藥學年會 (APPS) 參與證書</h4>
                         </div>
                     </a>
@@ -1138,7 +1143,8 @@
                 <p>若您對我的研究感興趣，或有任何學術交流、合作機會，歡迎透過以下方式與我聯繫。</p>
                 <div class="contact-links">
                     <a href="mailto:409030002@mail.ndmctsgh.edu.tw">Email</a>
-                    <a href="https://linkedin.com/in/your-profile" target="_blank">LinkedIn</a> <a href="https://orcid.org/0009-0007-0367-3269" target="_blank">ORCID</a> </div>
+                    <a href="https://linkedin.com/in/your-profile" target="_blank">LinkedIn</a> <a href="https://orcid.org/0009-0007-0367-3269" target="_blank">ORCID</a> 
+                </div>
             </div>
         </section>
 
@@ -1238,9 +1244,4 @@
 
     </script>
 </body>
-
 </html>
-
-
-
-
