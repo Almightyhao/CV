@@ -155,8 +155,13 @@
             min-height: 90vh;
             display: flex;
             align-items: center;
-            padding-top: 70px; /* Offset for navbar */
-            background: linear-gradient(135deg, var(--bg-light) 0%, #e3f2fd 100%);
+            padding-top: 70px;
+            /* --- 修改這裡 --- */
+            background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            /* ---------------- */
         }
 
         .hero-content {
