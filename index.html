@@ -10,8 +10,8 @@
     
     <style>
         :root {
-            --primary-color: #0d47a1; /* 深藍色，源自國防醫學院徽章 */
-            --secondary-color: #b71c1c; /* 紅色，點綴 */
+            --primary-color: #0d47a1; /* 深藍色 */
+            --secondary-color: #b71c1c; /* 紅色 */
             --text-dark: #202124;
             --text-medium: #5f6368;
             --text-light: #f8f9fa;
@@ -28,9 +28,7 @@
             padding: 0;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Inter', 'Noto Sans TC', sans-serif;
@@ -62,93 +60,21 @@
             height: 70px;
         }
 
-        .nav-logo {
-            font-weight: 700;
-            font-size: 1.4rem;
-            color: var(--primary-color);
-            text-decoration: none;
-        }
+        .nav-logo { font-weight: 700; font-size: 1.4rem; color: var(--primary-color); text-decoration: none; }
+        .nav-links { display: flex; list-style: none; gap: 25px; }
+        .nav-links a { text-decoration: none; color: var(--text-medium); font-weight: 500; transition: var(--transition); padding: 5px 0; font-size: 0.95rem; position: relative; }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary-color); }
+        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--primary-color); transition: var(--transition); }
+        .nav-links a:hover::after { width: 100%; }
 
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 35px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-medium);
-            font-weight: 500;
-            transition: var(--transition);
-            position: relative;
-            padding: 5px 0;
-            font-size: 0.95rem;
-        }
-
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--primary-color);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary-color);
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover::after, .nav-links a.active::after {
-            width: 100%;
-        }
-
-        .nav-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 5px;
-        }
-
-        .nav-toggle span {
-            width: 25px;
-            height: 3px;
-            background: var(--text-dark);
-            border-radius: 2px;
-            transition: var(--transition);
-        }
+        .nav-toggle { display: none; flex-direction: column; cursor: pointer; gap: 5px; }
+        .nav-toggle span { width: 25px; height: 3px; background: var(--text-dark); border-radius: 2px; }
 
         /* --- 主要容器 --- */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .section {
-            padding-top: 100px;
-            padding-bottom: 70px;
-        }
-        
-        .section-title {
-            font-size: 2.8rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 40px;
-            text-align: center;
-            position: relative;
-        }
-        
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background: var(--secondary-color);
-            margin: 15px auto 0;
-            border-radius: 2px;
-        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .section { padding-top: 100px; padding-bottom: 70px; }
+        .section-title { font-size: 2.8rem; font-weight: 700; color: var(--primary-color); margin-bottom: 40px; text-align: center; }
+        .section-title::after { content: ''; display: block; width: 60px; height: 4px; background: var(--secondary-color); margin: 15px auto 0; border-radius: 2px; }
 
         /* --- 英雄區域 (Hero) --- */
         #hero {
@@ -159,46 +85,15 @@
             background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('background.jpg');
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
         }
 
-        .hero-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            align-items: center;
-            gap: 60px;
-        }
+        .hero-content { display: grid; grid-template-columns: 2fr 1fr; align-items: center; gap: 60px; }
+        .hero-text h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; color: var(--primary-color); margin-bottom: 20px; }
+        .hero-text .subtitle { font-size: 1.5rem; color: var(--text-medium); margin-bottom: 30px; }
+        .hero-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+        .tag { background: rgba(13, 71, 161, 0.1); color: var(--primary-color); padding: 6px 14px; border-radius: 20px; font-size: 0.9rem; font-weight: 500; }
 
-        .hero-text h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-        }
-
-        .hero-text .subtitle {
-            font-size: 1.5rem;
-            font-weight: 400;
-            color: var(--text-medium);
-            margin-bottom: 30px;
-        }
-        
-        .hero-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        
-        .tag {
-            background: rgba(13, 71, 161, 0.1);
-            color: var(--primary-color);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        /* --- 大頭照正圓型與 QR Code 懸浮樣式 --- */
+        /* --- 正圓人像與懸浮 QR Code --- */
         .hero-image-wrapper {
             position: relative;
             display: inline-block;
@@ -209,9 +104,9 @@
 
         .hero-image {
             width: 100%;
-            aspect-ratio: 1 / 1; /* 強制 1:1 比例 */
-            border-radius: 50%; /* 正圓型 */
-            object-fit: cover; /* 確保人像不變形 */
+            aspect-ratio: 1 / 1;
+            border-radius: 50%;
+            object-fit: cover;
             border: 8px solid var(--bg-white);
             box-shadow: var(--shadow);
             display: block;
@@ -219,8 +114,8 @@
 
         .qr-overlay {
             position: absolute;
-            bottom: 15px; /* 貼合圓型邊緣 */
-            right: 5px;   /* 貼合圓型邊緣 */
+            bottom: 15px;
+            right: 15px;
             background: white;
             padding: 8px;
             border-radius: 12px;
@@ -232,588 +127,87 @@
             z-index: 10;
         }
 
-        .qr-overlay:hover {
-            transform: scale(1.1) translateY(-5px);
-        }
+        .qr-overlay:hover { transform: scale(1.1) translateY(-5px); }
+        .qr-small { width: 75px; height: 75px; display: block; border-radius: 4px; }
+        .qr-overlay span { font-size: 0.7rem; color: var(--text-medium); margin-top: 4px; font-weight: 700; }
 
-        .qr-small {
-            width: 75px; /* 縮小 QR Code 尺寸 */
-            height: 75px;
-            display: block;
-            border-radius: 4px;
-        }
+        .btn { display: inline-block; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: 500; transition: var(--transition); border: none; font-size: 1rem; cursor: pointer; }
+        .btn-primary { background: var(--primary-color); color: white; margin-top: 30px; }
+        .btn-primary:hover { background: #0d3c80; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(13,71,161,0.3); }
 
-        .qr-overlay span {
-            font-size: 0.7rem;
-            color: var(--text-medium);
-            margin-top: 4px;
-            font-weight: 700;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 12px 28px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-            cursor: pointer;
-            border: none;
-            font-size: 1rem;
-        }
-        
-        .btn-primary {
-            background: var(--primary-color);
-            color: white;
-            margin-top: 30px;
-        }
-        
-        .btn-primary:hover {
-            background: #0d3c80;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(13, 71, 161, 0.3);
-        }
+        /* --- About --- */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        .about-list { list-style: none; margin-top: 20px; }
+        .about-list li { position: relative; padding-left: 30px; margin-bottom: 15px; }
+        .about-list li::before { content: '✓'; position: absolute; left: 0; color: var(--primary-color); font-weight: 700; }
+        .about-image { width: 100%; border-radius: 12px; box-shadow: var(--shadow); }
 
-        /* --- 關於我 (About) --- */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-        
-        .about-text p {
-            font-size: 1.1rem;
-            color: var(--text-medium);
-            margin-bottom: 20px;
-        }
-        
-        .about-list {
-            list-style: none;
-            margin-top: 20px;
-        }
-        
-        .about-list li {
-            position: relative;
-            padding-left: 30px;
-            margin-bottom: 15px;
-            font-size: 1.05rem;
-        }
-        
-        .about-list li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            top: 0;
-            color: var(--primary-color);
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-        
-        .research-plan-item {
-            padding-left: 30px;
-            margin-bottom: 15px;
-            font-size: 1.05rem;
-        }
-        .research-plan-item strong {
-             display: block; 
-             margin-bottom: 5px; 
-        }
-        .research-plan-item .plan-title {
-             display: block; 
-             margin-left: 0; 
-             padding-left: 0; 
-             line-height: 1.4; 
-        }
-        
-        .about-image {
-            width: 100%;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-        }
+        /* --- Timeline --- */
+        #research { background: var(--bg-light); }
+        .timeline { position: relative; max-width: 900px; margin: 0 auto; }
+        .timeline::before { content: ''; position: absolute; left: 50%; width: 4px; background: var(--border-light); top: 0; bottom: 0; transform: translateX(-50%); }
+        .timeline-item { padding: 20px 40px; position: relative; width: 50%; }
+        .timeline-item:nth-child(odd) { left: 0; text-align: right; }
+        .timeline-item:nth-child(even) { left: 50%; text-align: left; }
+        .timeline-dot { position: absolute; top: 25px; width: 20px; height: 20px; background: var(--secondary-color); border-radius: 50%; z-index: 1; border: 4px solid var(--bg-light); }
+        .timeline-item:nth-child(odd) .timeline-dot { right: -10px; }
+        .timeline-item:nth-child(even) .timeline-dot { left: -10px; }
+        .timeline-content { background: white; padding: 20px; border-radius: 12px; box-shadow: var(--shadow); }
+        .timeline-date { color: var(--secondary-color); font-weight: 700; font-size: 0.9rem; }
+        .timeline-title { font-size: 1.1rem; margin: 5px 0; }
+        .timeline-role { font-style: italic; color: var(--primary-color); font-size: 0.9rem; margin-bottom: 5px; }
 
-        /* --- 研究成果 (Research) --- */
-        #research {
-            background: var(--bg-light);
-        }
-        
-        .timeline {
-            position: relative;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: var(--border-light);
-            border-radius: 2px;
-        }
-        
-        .timeline-item {
-            padding: 30px 40px;
-            position: relative;
-            width: 50%;
-            margin-bottom: 30px;
-        }
-        
-        .timeline-item:nth-child(odd) {
-            left: 0;
-            padding-right: 70px;
-            text-align: right;
-        }
-        
-        .timeline-item:nth-child(even) {
-            left: 50%;
-            padding-left: 70px;
-            text-align: left;
-        }
-        
-        .timeline-dot {
-            content: '';
-            position: absolute;
-            top: 35px;
-            width: 20px;
-            height: 20px;
-            background: var(--secondary-color);
-            border: 4px solid var(--bg-light);
-            border-radius: 50%;
-            z-index: 1;
-        }
-        
-        .timeline-item:nth-child(odd) .timeline-dot {
-            right: -10px;
-        }
-        
-        .timeline-item:nth-child(even) .timeline-dot {
-            left: -10px;
-        }
-        
-        .timeline-content {
-            background: var(--bg-white);
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-        
-        .timeline-content:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        }
-        
-        .timeline-date {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--secondary-color);
-            margin-bottom: 8px;
-        }
-        
-        .timeline-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-        
-        .timeline-role {
-            font-style: italic;
-            font-weight: 500;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-        
-        .timeline-desc {
-            font-size: 0.95rem;
-            color: var(--text-medium);
-        }
-        
-        /* --- 研討會與國際參與 (Participation) --- */
-        #participation { 
-            background: var(--bg-white); 
-        }
-        
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-        
-        .gallery-item {
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            cursor: pointer;
-            transition: var(--transition);
-            position: relative;
-        }
-        
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-        }
-        
-        .gallery-item img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            display: block;
-        }
-        
-        .gallery-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.8));
-            color: white;
-            padding: 25px 15px 15px;
-            font-weight: 500;
-            font-size: 0.9rem;
-            opacity: 1;
-            transition: var(--transition);
-        }
+        /* --- Gallery --- */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .gallery-item { border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); cursor: pointer; position: relative; }
+        .gallery-item img { width: 100%; height: 250px; object-fit: cover; transition: 0.5s; }
+        .gallery-item:hover img { transform: scale(1.1); }
+        .gallery-caption { position: absolute; bottom: 0; background: rgba(0,0,0,0.7); color: white; width: 100%; padding: 10px; font-size: 0.85rem; }
 
-        /* --- 技能與經歷 (Skills & Experience) --- */
-        #skills {
-            background: var(--bg-light);
-        }
-        
-        .skills-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-        }
-        
-        .skill-category {
-            background: var(--bg-white);
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            border-top: 4px solid var(--primary-color);
-        }
-        
-        .skill-category h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-        }
-        
-        .skill-list {
-            list-style: none;
-        }
-        
-        .skill-list li {
-            position: relative;
-            padding-left: 25px;
-            margin-bottom: 10px;
-            color: var(--text-medium);
-        }
-        
-        .skill-list li::before {
-            content: '•';
-            position: absolute;
-            left: 0;
-            color: var(--primary-color);
-            font-weight: 700;
-            font-size: 1.2rem;
-            top: -3px;
-        }
-        
-        /* --- 個人專案 (Projects) --- */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .project-item {
-            background: var(--bg-white);
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            padding: 30px;
-            text-align: center;
-            transition: var(--transition);
-            text-decoration: none;
-            color: var(--text-dark);
-            border-bottom: 4px solid var(--primary-color);
-            display: flex; 
-            flex-direction: column; 
-            justify-content: space-between; 
-        }
-        
-        .project-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-        }
+        /* --- Skills --- */
+        #skills { background: var(--bg-light); }
+        .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .skill-category { background: white; padding: 25px; border-radius: 12px; border-top: 4px solid var(--primary-color); box-shadow: var(--shadow); }
+        .skill-list { list-style: none; margin-top: 15px; }
+        .skill-list li { padding-left: 20px; position: relative; margin-bottom: 8px; color: var(--text-medium); }
+        .skill-list li::before { content: '•'; position: absolute; left: 0; color: var(--primary-color); font-weight: 700; }
 
-        .project-item h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
-        
-        .project-item p {
-            font-size: 1rem;
-            color: var(--text-medium);
-            flex-grow: 1; 
-            margin-bottom: 20px; 
-        }
-        
-        .project-item span {
-            font-weight: 600;
-            color: var(--primary-color);
-            text-decoration: underline;
-        }
+        /* --- Projects --- */
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .project-item { background: white; padding: 25px; border-radius: 12px; text-decoration: none; color: inherit; border-bottom: 4px solid var(--primary-color); box-shadow: var(--shadow); transition: 0.3s; display: flex; flex-direction: column; }
+        .project-item:hover { transform: translateY(-5px); }
+        .project-item h3 { color: var(--primary-color); margin-bottom: 10px; font-size: 1.2rem; }
+        .project-item p { font-size: 0.95rem; color: var(--text-medium); flex-grow: 1; margin-bottom: 15px; }
+        .project-item span { font-weight: 700; color: var(--primary-color); font-size: 0.9rem; }
 
-        /* --- 證照與獎項 (Certificates) --- */
-        .cert-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .cert-item {
-            text-align: center;
-        }
-        
-        .cert-item img {
-            width: 100%;
-            height: 260px; 
-            object-fit: cover; 
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        
-        .cert-item:hover img {
-             box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-             transform: scale(1.03);
-        }
-        
-        .cert-item h4 {
-            margin-top: 15px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--text-dark);
-        }
+        /* --- Certificates --- */
+        .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+        .cert-item { text-align: center; }
+        .cert-item img { width: 100%; height: 180px; object-fit: cover; border-radius: 8px; box-shadow: var(--shadow); margin-bottom: 10px; cursor: pointer; }
+        .awards-list { background: var(--bg-light); padding: 30px; border-radius: 12px; margin-top: 40px; text-align: center; }
+        .awards-list ul { list-style: none; display: inline-block; text-align: left; }
 
-        .cert-link {
-            text-decoration: none;
-            color: inherit;
-        }
-        
-        .awards-list {
-            max-width: 800px;
-            margin: 40px auto 0;
-            background: var(--bg-light);
-            padding: 30px;
-            border-radius: 12px;
-        }
-        
-        .awards-list h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--primary-color);
-            text-align: center;
-            margin-bottom: 25px;
-        }
-        
-        .awards-list ul {
-            list-style: none;
-            text-align: center;
-        }
-        
-        .awards-list li {
-            color: var(--text-medium);
-            font-weight: 500;
-            margin-bottom: 10px;
-            font-size: 1.05rem;
-        }
+        /* --- Contact & Footer --- */
+        #contact { background: var(--primary-color); color: white; text-align: center; }
+        #contact .section-title { color: white; }
+        .contact-links { display: flex; justify-content: center; gap: 20px; margin-top: 20px; }
+        .contact-links a { background: white; color: var(--primary-color); padding: 10px 25px; border-radius: 8px; text-decoration: none; font-weight: 600; }
+        .footer { padding: 30px; text-align: center; background: #202124; color: #888; font-size: 0.9rem; }
 
-        /* --- 聯絡我 (Contact) --- */
-        #contact {
-            text-align: center;
-            background: var(--primary-color);
-            color: var(--text-light);
-        }
-        
-        #contact .section-title {
-            color: var(--text-light);
-        }
-        
-        #contact .section-title::after {
-            background: var(--text-light);
-        }
-        
-        #contact p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto 40px;
-            color: #e3f2fd;
-        }
-        
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
-        }
-        
-        .contact-links a {
-            color: var(--primary-color);
-            background: var(--bg-white);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1.1rem;
-            padding: 12px 25px;
-            border-radius: 8px;
-            transition: var(--transition);
-        }
-        
-        .contact-links a:hover {
-            background: var(--bg-light);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
-        }
-
-        /* --- 頁尾 (Footer) --- */
-        .footer {
-            text-align: center;
-            padding: 30px 20px;
-            background: var(--text-dark);
-            color: var(--text-medium);
-        }
-        
-        .footer p {
-            font-size: 0.9rem;
-        }
-
-        /* --- 回到頂部按鈕 --- */
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.5rem;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            transition: var(--transition);
-            z-index: 998;
-        }
-        
-        .back-to-top.visible {
-            display: flex;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* --- 燈箱 (Lightbox) --- */
-        .lightbox {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 1001;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            cursor: pointer;
-        }
-
-        .lightbox img {
-            max-width: 90vw;
-            max-height: 90vh;
-            border-radius: 8px;
-        }
-
-        /* --- 響應式設計 (RWD) --- */
+        /* --- Mobile RWD --- */
         @media (max-width: 992px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            
-            .hero-image-wrapper {
-                grid-row: 1;
-                max-width: 300px;
-                margin-bottom: 30px;
-            }
+            .hero-content { grid-template-columns: 1fr; text-align: center; }
+            .hero-image-wrapper { grid-row: 1; max-width: 280px; margin-bottom: 30px; }
+            .about-grid { grid-template-columns: 1fr; }
+            .timeline::before { left: 20px; }
+            .timeline-item { width: 100%; left: 0 !important; text-align: left !important; padding-left: 50px; }
+            .timeline-dot { left: 10px !important; }
+            .skills-grid { grid-template-columns: 1fr; }
+        }
 
-            .qr-small {
-                width: 60px;
-                height: 60px;
-            }
-            
-            .hero-tags {
-                justify-content: center;
-            }
-            
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .skills-grid, .cert-grid, .project-grid { 
-                grid-template-columns: 1fr;
-            }
-            
-            .timeline::before {
-                left: 20px;
-                transform: none;
-            }
-            
-            .timeline-item, .timeline-item:nth-child(even) {
-                width: 100%;
-                left: 0;
-                padding-left: 50px;
-                padding-right: 0;
-                text-align: left;
-            }
-            
-            .timeline-dot, .timeline-item:nth-child(odd) .timeline-dot, .timeline-item:nth-child(even) .timeline-dot {
-                left: 10px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background: white;
-                flex-direction: column;
-                padding: 20px;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            }
-            
-            .nav-links.active {
-                display: flex;
-            }
-            
-            .nav-toggle {
-                display: flex;
-            }
-        }
+        /* --- Lightbox --- */
+        #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 2000; align-items: center; justify-content: center; }
+        #lightbox img { max-width: 90%; max-height: 80%; border-radius: 8px; }
     </style>
 </head>
 <body>
@@ -821,43 +215,33 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="#hero" class="nav-logo">曾浩宸 Hao Chen Tseng</a>
-            <div class="nav-toggle" id="nav-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="#about" class="nav-link">關於我</a></li>
-                <li><a href="#research" class="nav-link">研究成果</a></li>
-                <li><a href="#participation" class="nav-link">研討會參與</a></li> 
-                <li><a href="#skills" class="nav-link">技能與經歷</a></li>
-                <li><a href="#projects" class="nav-link">個人專案</a></li> 
-                <li><a href="#certificates" class="nav-link">證照與獎項</a></li>
-                <li><a href="#contact" class="nav-link">聯絡我</a></li>
+            <ul class="nav-links">
+                <li><a href="#about">關於我</a></li>
+                <li><a href="#research">研究成果</a></li>
+                <li><a href="#skills">技能經歷</a></li>
+                <li><a href="#projects">個人專案</a></li>
+                <li><a href="#certificates">證照獎項</a></li>
+                <li><a href="#contact">聯絡我</a></li>
             </ul>
         </div>
     </nav>
 
     <main>
-
         <section id="hero" class="section">
             <div class="container hero-content">
                 <div class="hero-text">
                     <h1>曾浩宸<br>Hao Chen Tseng</h1>
                     <p class="subtitle">藥學系學生 | 基因體學研究者 | 生物資訊與機器學習</p>
                     <div class="hero-tags">
-                        <span class="tag">#藥學</span>
-                        <span class="tag">#基因體學</span>
-                        <span class="tag">#生物資訊</span>
-                        <span class="tag">#機器學習</span>
-                        <span class="tag">#青光眼 (POAG)</span>
-                        <span class="tag">#男性不孕症</span>
+                        <span class="tag">#藥學</span><span class="tag">#基因體學</span>
+                        <span class="tag">#生物資訊</span><span class="tag">#機器學習</span>
+                        <span class="tag">#青光眼</span><span class="tag">#男性不孕症</span>
                     </div>
                     <a href="#contact" class="btn btn-primary">聯絡我</a>
                 </div>
                 
                 <div class="hero-image-wrapper">
-                    <img src="S__17702918.jpg" alt="曾浩宸個人照片" class="hero-image">
+                    <img src="S__17702918.jpg" alt="個人照片" class="hero-image">
                     <div class="qr-overlay">
                         <img src="qr.jpg" alt="QR Code" class="qr-small">
                         <span>掃描聯繫</span>
@@ -871,18 +255,14 @@
                 <h2 class="section-title">關於我</h2>
                 <div class="about-grid">
                     <div class="about-text">
-                        <p>我就讀於國防醫學大學藥學系 (2020-2026)，奠定了紮實的藥理學基礎。自大二時，我加入了黃攸娟副教授的實驗室 (2022-2025)，從事基因體學研究，專注於全外顯子定序 (WES) 分析與致病基因預測模型建立。</p>
-                        <p>在研究歷程中，我致力於結合生物資訊與機器學習方法，深入探討青光眼及男性不孕症的遺傳機制。</p>
+                        <p>我就讀於國防醫學大學藥學系 (2020-2026)。自大二加入黃攸娟副教授實驗室，專注於全外顯子定序 (WES) 分析與致病基因預測模型建立。</p>
                         <ul class="about-list">
-                            <li><strong>學歷:</strong> 國防醫學大學藥學系 (2020-2026)</li>
+                            <li><strong>學歷:</strong> 國防醫學大學藥學系 / 成功高中市長獎</li>
                             <li><strong>資格:</strong> 藥師第一階段國考及格</li>
-                            <li class="research-plan-item"> 
-                                <strong>研究計畫:</strong> 
-                                <span class="plan-title">113年度 國科會大專學生研究計畫：全外顯⼦定序分析探討台灣家族性原發隅⾓開放型⻘光眼易感基因基因傾向</span>
-                            </li>
+                            <li><strong>研究計畫:</strong> 113年度國科會大專學生研究計畫：全外顯子定序分析探討台灣家族性 POAG 基因傾向</li>
                         </ul>
                     </div>
-                    <img src="178D6D78-9FA6-4251-A7D9-05CEB35D9CFC.JPG" alt="曾浩宸海報發表照片" class="about-image">
+                    <img src="178D6D78-9FA6-4251-A7D9-05CEB35D9CFC.JPG" alt="研究照片" class="about-image">
                 </div>
             </div>
         </section>
@@ -897,16 +277,24 @@
                             <div class="timeline-date">2023年10月</div>
                             <h3 class="timeline-title">Genetic Study of Male Infertility in a Taiwanese Cohort</h3>
                             <div class="timeline-role">第三作者</div>
-                            <p class="timeline-desc">於 2024 台灣生殖醫學會年會發表。</p>
+                            <p>發表於 2024 台灣生殖醫學會年會。</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">2024年 6-7月</div>
+                            <h3 class="timeline-title">IPSF 亞太藥學年會 (APPS)</h3>
+                            <div class="timeline-role">國內學生代表 (泰國清萊)</div>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
                         <div class="timeline-content">
                             <div class="timeline-date">2024年8月</div>
-                            <h3 class="timeline-title">Activation of the ROCK/MYLK Pathway in Ocular Hypertension</h3>
+                            <h3 class="timeline-title">Activation of ROCK/MYLK Pathway in Ocular Hypertension</h3>
                             <div class="timeline-role">第三作者</div>
-                            <p class="timeline-desc">於 2024 軍醫大會發表。</p>
+                            <p>發表於 2024 軍醫大會。</p>
                         </div>
                     </div>
                     <div class="timeline-item">
@@ -915,7 +303,6 @@
                             <div class="timeline-date">審查中</div>
                             <h3 class="timeline-title">Exome-Based Machine Learning in Early-Onset POAG</h3>
                             <div class="timeline-role">第一作者</div>
-                            <p class="timeline-desc">於 2025 北醫大臨床醫學研究所研討會發表。</p>
                         </div>
                     </div>
                 </div>
@@ -924,16 +311,13 @@
 
         <section id="participation" class="section">
             <div class="container">
-                <h2 class="section-title">研討會與國際參與</h2>
+                <h2 class="section-title">研討會參與</h2>
                 <div class="gallery-grid">
-                    <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="IMG_9023.JPG" alt="POAG研究海報">
-                        <div class="gallery-caption">POAG研究海報 (2024 軍醫大會)</div>
-                    </div>
-                    <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="S__17702920.jpg" alt="APPS 團體照">
-                        <div class="gallery-caption">2024 亞太藥學年會 (APPS) 泰國清邁</div>
-                    </div>
+                    <div class="gallery-item" onclick="openLightbox(this)"><img src="409030002 曾浩宸_pages-to-jpg-0001.jpg"><div class="gallery-caption">機器學習預測模型口頭壁報</div></div>
+                    <div class="gallery-item" onclick="openLightbox(this)"><img src="IMG_9023.JPG"><div class="gallery-caption">POAG 雙靶點抑制劑研究海報</div></div>
+                    <div class="gallery-item" onclick="openLightbox(this)"><img src="IMG_9022.JPG"><div class="gallery-caption">男性不孕症基因研究海報</div></div>
+                    <div class="gallery-item" onclick="openLightbox(this)"><img src="S__17702920.jpg"><div class="gallery-caption">2024 APPS 泰國清邁</div></div>
+                    <div class="gallery-item" onclick="openLightbox(this)"><img src="IMG_9025.JPG"><div class="gallery-caption">藥學系研討會</div></div>
                 </div>
             </div>
         </section>
@@ -943,17 +327,18 @@
                 <h2 class="section-title">技能與實習</h2>
                 <div class="skills-grid">
                     <div class="skill-category">
-                        <h3>研究技能</h3>
+                        <h3>研究與生物資訊</h3>
                         <ul class="skill-list">
                             <li>CLC Genomics / IPA 分析</li>
+                            <li>PCR / DNA 電泳 / 核酸萃取</li>
                             <li>機器學習 (Python) / WES 分析</li>
                         </ul>
                     </div>
                     <div class="skill-category">
-                        <h3>藥學實習</h3>
+                        <h3>藥學實習經歷</h3>
                         <ul class="skill-list">
                             <li>三軍總醫院 臨床藥學部</li>
-                            <li>順天堂藥廠 / 赫得藥局</li>
+                            <li>順天堂藥廠 (成分分析) / 赫得藥局</li>
                         </ul>
                     </div>
                 </div>
@@ -964,12 +349,16 @@
             <div class="container">
                 <h2 class="section-title">個人專案</h2>
                 <div class="project-grid">
-                    <a href="https://almightyhao.github.io/OPD-Storage-Code-Finding/" class="project-item">
-                        <h3>藥品儲位查詢 App</h3><p>提升藥局工作效率，方便快速查詢藥品儲位。</p><span>前往專案 &rarr;</span>
-                    </a>
-                    <a href="https://almightyhao.github.io/SOAP-writter/" class="project-item">
-                        <h3>智慧藥師 SOAP 產生器</h3><p>協助藥師快速生成結構化 SOAP 筆記的工具。</p><span>前往專案 &rarr;</span>
-                    </a>
+                    <a href="https://almightyhao.github.io/OPD-Storage-Code-Finding/" target="_blank" class="project-item"><h3>門診儲位表查詢 App</h3><p>提升藥局工作效率。</p><span>前往專案 &rarr;</span></a>
+                    <a href="https://almightyhao.github.io/Storage-Code-Finding/" target="_blank" class="project-item"><h3>住院儲位表查詢 App</h3><p>快速查詢藥品儲位。</p><span>前往專案 &rarr;</span></a>
+                    <a href="https://almightyhao.github.io/SOAP-writter/" target="_blank" class="project-item"><h3>智慧藥師 SOAP 產生器</h3><p>快速生成臨床 SOAP 筆記。</p><span>前往專案 &rarr;</span></a>
+                    <a href="https://almightyhao.github.io/MediSpan/" target="_blank" class="project-item"><h3>Medispan 用藥甘特圖</h3><p>迅速繪製精緻用藥圖表。</p><span>前往專案 &rarr;</span></a>
+                    <a href="https://almightyhao.github.io/TCM-test/" target="_blank" class="project-item"><h3>中藥材辨認練習</h3><p>輔助記憶中藥外觀。</p><span>前往專案 &rarr;</span></a>
+                    <a href="https://almightyhao.github.io/Stocktaking/" target="_blank" class="project-item"><h3>藥局盤點系統</h3><p>評估安全庫存量。</p><span>前往專案 &rarr;</span></a>
+                    <a href="https://almightyhao.github.io/fda-monitor/" target="_blank" class="project-item"><h3>仿單異動監測</h3><p>每日監測衛福部公告。</p><span>前往專案 &rarr;</span></a>
+                    <a href="https://almightyhao.github.io/CareNotes-Generator /" target="_blank" class="project-item"><h3>衛教單張生成器</h3><p>自動化生成院內衛教單。</p><span>前往專案 &rarr;</span></a>
+                    <a href=" https://almightyhao.github.io/AIoT-generator/" target="_blank" class="project-item"><h3>AIoT 知識條目生成</h3><p>自動化生成知識條目。</p><span>前往專案 &rarr;</span></a>
+                    <a href=" https://almightyhao.github.io/Table-converter/" target="_blank" class="project-item"><h3>藥師筆記排版器</h3><p>排版 Pharmacist Note 表格。</p><span>前往專案 &rarr;</span></a>
                 </div>
             </div>
         </section>
@@ -978,8 +367,17 @@
             <div class="container">
                 <h2 class="section-title">證照與獎項</h2>
                 <div class="cert-grid">
-                    <div class="cert-item"><img src="itp.jpg" alt="獎學金"><h4>TOEFL ITP 研究獎學金</h4></div>
-                    <div class="cert-item"><img src="Google_page-0001.jpg" alt="Gemini"><h4>Gemini Certified Educator</h4></div>
+                    <div class="cert-item" onclick="openLightbox(this)"><img src="IMG_8924.PNG"><h4>Google Cloud 數位人才</h4></div>
+                    <div class="cert-item" onclick="openLightbox(this)"><img src="Google_page-0001.jpg"><h4>Gemini Educator</h4></div>
+                    <div class="cert-item" onclick="openLightbox(this)"><img src="itp.jpg"><h4>TOEFL ITP 獎學金</h4></div>
+                </div>
+                <div class="awards-list">
+                    <h3>獎學金與檢定</h3>
+                    <ul>
+                        <li>詹益欣教育長獎學金 (第一名)</li>
+                        <li>台灣百靈佳殷格翰優秀獎學金</li>
+                        <li>TOEIC 910分 / ALCPT 95分 / TOEFL ITP 617分</li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -990,41 +388,17 @@
                 <div class="contact-links">
                     <a href="mailto:409030002@mail.ndmctsgh.edu.tw">Email</a>
                     <a href="https://github.com/Almightyhao" target="_blank">Github</a>
+                    <a href="https://orcid.org/0009-0007-0367-3269" target="_blank">ORCID</a>
                 </div>
             </div>
         </section>
-
     </main>
 
-    <footer class="footer">
-        <p>&copy; 2026 曾浩宸 (Hao Chen Tseng). All rights reserved.</p>
-    </footer>
-
-    <button class="back-to-top" id="back-to-top" aria-label="回到頂部" onclick="scrollToTop()">&uarr;</button>
-
-    <div class="lightbox" id="lightbox" onclick="closeLightbox()"><img id="lightbox-img" src="" alt="放大圖片"></div>
+    <div id="lightbox" onclick="closeLightbox()"><img id="lightbox-img"></div>
 
     <script>
-        // 漢堡選單
-        const navToggle = document.getElementById('nav-toggle');
-        const navLinks = document.getElementById('nav-links');
-        navToggle.addEventListener('click', () => {
-            navToggle.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
-
-        // 滾動效果
-        window.addEventListener('scroll', () => {
-            const btn = document.getElementById('back-to-top');
-            if (window.pageYOffset > 300) btn.classList.add('visible');
-            else btn.classList.remove('visible');
-        });
-
-        function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
-
-        // 燈箱
-        function openLightbox(element) {
-            const img = element.querySelector('img');
+        function openLightbox(el) {
+            const img = el.querySelector('img');
             document.getElementById('lightbox-img').src = img.src;
             document.getElementById('lightbox').style.display = 'flex';
         }
