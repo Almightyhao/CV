@@ -198,20 +198,20 @@
             font-weight: 500;
         }
 
-        /* --- Hero Image & QR Overlay (人像正圓關鍵) --- */
+        /* --- Hero Image & QR Overlay --- */
         .hero-image-wrapper {
             position: relative;
             display: inline-block;
             justify-self: center;
             width: 100%;
-            max-width: 350px; /* 控制圓圈大小 */
+            max-width: 350px;
         }
 
         .hero-image {
             width: 100%;
-            aspect-ratio: 1 / 1; /* 強制寬高 1:1，確保圓形 */
-            border-radius: 50%; /* 正圓型 */
-            object-fit: cover; /* 確保人像不變形 */
+            aspect-ratio: 1 / 1;
+            border-radius: 50%;
+            object-fit: cover;
             border: 8px solid var(--bg-white);
             box-shadow: var(--shadow);
             display: block;
@@ -237,8 +237,8 @@
         }
 
         .qr-small {
-            width: 70px;
-            height: 70px;
+            width: 75px;
+            height: 75px;
             display: block;
             border-radius: 4px;
         }
@@ -274,13 +274,49 @@
             box-shadow: 0 6px 16px rgba(13, 71, 161, 0.3);
         }
 
-        /* --- 後續區塊樣式省略，維持原樣 ... --- */
-        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
-        .about-text p { font-size: 1.1rem; color: var(--text-medium); margin-bottom: 20px; }
-        .about-list { list-style: none; margin-top: 20px; }
-        .about-list li { position: relative; padding-left: 30px; margin-bottom: 15px; font-size: 1.05rem; }
-        .about-list li::before { content: '✓'; position: absolute; left: 0; top: 0; color: var(--primary-color); font-weight: 700; font-size: 1.2rem; }
-        .about-image { width: 100%; border-radius: 12px; box-shadow: var(--shadow); }
+        /* --- About Section --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-text p {
+            font-size: 1.1rem;
+            color: var(--text-medium);
+            margin-bottom: 20px;
+        }
+        
+        .about-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+        
+        .about-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+        
+        .about-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .about-image {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        /* --- Research Timeline --- */
         #research { background: var(--bg-light); }
         .timeline { position: relative; max-width: 900px; margin: 0 auto; }
         .timeline::before { content: ''; position: absolute; left: 50%; transform: translateX(-50%); top: 0; bottom: 0; width: 4px; background: var(--border-light); border-radius: 2px; }
@@ -293,54 +329,48 @@
         .timeline-content { background: var(--bg-white); padding: 25px; border-radius: 12px; box-shadow: var(--shadow); transition: var(--transition); }
         .timeline-content:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
         .timeline-date { font-size: 0.9rem; font-weight: 600; color: var(--secondary-color); margin-bottom: 8px; }
-        .timeline-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
+        .timeline-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; }
         .timeline-role { font-style: italic; font-weight: 500; color: var(--primary-color); margin-bottom: 10px; }
-        .timeline-desc { font-size: 0.95rem; color: var(--text-medium); }
-        #participation { background: var(--bg-white); }
+        .timeline-desc { font-size: 0.9rem; color: var(--text-medium); }
+
+        /* --- Gallery --- */
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
         .gallery-item { border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); cursor: pointer; transition: var(--transition); position: relative; }
-        .gallery-item:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
         .gallery-item img { width: 100%; height: 300px; object-fit: cover; display: block; }
-        .gallery-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); color: white; padding: 25px 15px 15px; font-weight: 500; font-size: 0.9rem; opacity: 1; transition: var(--transition); }
+        .gallery-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); color: white; padding: 25px 15px 15px; font-weight: 500; font-size: 0.9rem; }
+
+        /* --- Skills --- */
         #skills { background: var(--bg-light); }
         .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
         .skill-category { background: var(--bg-white); padding: 30px; border-radius: 12px; box-shadow: var(--shadow); border-top: 4px solid var(--primary-color); }
-        .skill-category h3 { font-size: 1.5rem; font-weight: 600; color: var(--primary-color); margin-bottom: 20px; }
         .skill-list { list-style: none; }
         .skill-list li { position: relative; padding-left: 25px; margin-bottom: 10px; color: var(--text-medium); }
-        .skill-list li::before { content: '•'; position: absolute; left: 0; color: var(--primary-color); font-weight: 700; font-size: 1.2rem; top: -3px; }
+        .skill-list li::before { content: '•'; position: absolute; left: 0; color: var(--primary-color); font-weight: 700; font-size: 1.2rem; }
+
+        /* --- Projects --- */
         .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .project-item { background: var(--bg-white); border-radius: 12px; box-shadow: var(--shadow); padding: 30px; text-align: center; transition: var(--transition); text-decoration: none; color: var(--text-dark); border-bottom: 4px solid var(--primary-color); display: flex; flex-direction: column; justify-content: space-between; }
-        .project-item:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
-        .project-item h3 { font-size: 1.3rem; font-weight: 600; color: var(--primary-color); margin-bottom: 15px; }
-        .project-item p { font-size: 1rem; color: var(--text-medium); flex-grow: 1; margin-bottom: 20px; }
-        .project-item span { font-weight: 600; color: var(--primary-color); text-decoration: underline; }
-        .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .project-item { background: var(--bg-white); border-radius: 12px; box-shadow: var(--shadow); padding: 30px; text-align: center; text-decoration: none; color: var(--text-dark); border-bottom: 4px solid var(--primary-color); display: flex; flex-direction: column; transition: var(--transition); }
+        .project-item:hover { transform: translateY(-5px); }
+        .project-item h3 { font-size: 1.2rem; color: var(--primary-color); margin-bottom: 15px; }
+        .project-item p { font-size: 0.95rem; color: var(--text-medium); margin-bottom: 20px; flex-grow: 1; }
+
+        /* --- Certificates --- */
+        .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
         .cert-item { text-align: center; }
-        .cert-item img { width: 100%; height: 260px; object-fit: cover; border-radius: 8px; box-shadow: var(--shadow); cursor: pointer; transition: var(--transition); }
-        .cert-item h4 { margin-top: 15px; font-size: 1.2rem; font-weight: 600; color: var(--text-dark); }
+        .cert-item img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; box-shadow: var(--shadow); cursor: pointer; }
         .awards-list { max-width: 800px; margin: 40px auto 0; background: var(--bg-light); padding: 30px; border-radius: 12px; }
-        .awards-list h3 { font-size: 1.5rem; font-weight: 600; color: var(--primary-color); text-align: center; margin-bottom: 25px; }
-        .awards-list ul { list-style: none; text-align: center; }
-        .awards-list li { color: var(--text-medium); font-weight: 500; margin-bottom: 10px; font-size: 1.05rem; }
-        #contact { text-align: center; background: var(--primary-color); color: var(--text-light); }
-        .contact-links { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
-        .contact-links a { color: var(--primary-color); background: var(--bg-white); text-decoration: none; font-weight: 500; font-size: 1.1rem; padding: 12px 25px; border-radius: 8px; transition: var(--transition); }
-        .footer { text-align: center; padding: 30px 20px; background: var(--text-dark); color: var(--text-medium); }
-        .back-to-top { position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px; background: var(--primary-color); color: white; border: none; border-radius: 50%; cursor: pointer; display: none; align-items: center; justify-content: center; z-index: 998; }
-        .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); z-index: 1001; align-items: center; justify-content: center; cursor: pointer; }
+
+        /* --- Lightbox --- */
+        .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); z-index: 2000; align-items: center; justify-content: center; cursor: pointer; }
         .lightbox img { max-width: 90vw; max-height: 90vh; border-radius: 8px; }
 
-        /* --- 響應式調整 --- */
         @media (max-width: 992px) {
             .hero-content { grid-template-columns: 1fr; text-align: center; }
             .hero-image-wrapper { max-width: 280px; margin-bottom: 30px; }
-            .qr-small { width: 60px; height: 60px; }
-            .about-grid { grid-template-columns: 1fr; }
-            .skills-grid, .cert-grid, .project-grid { grid-template-columns: 1fr; }
             .timeline::before { left: 20px; transform: none; }
-            .timeline-item, .timeline-item:nth-child(even) { width: 100%; left: 0; padding-left: 50px; padding-right: 0; text-align: left; }
+            .timeline-item { width: 100%; left: 0; padding-left: 50px; text-align: left; }
             .timeline-dot { left: 10px !important; }
+            .skills-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -349,17 +379,12 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="#hero" class="nav-logo">曾浩宸 Hao Chen Tseng</a>
-            <div class="nav-toggle" id="nav-toggle">
-                <span></span><span></span><span></span>
-            </div>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="#about" class="nav-link">關於我</a></li>
-                <li><a href="#research" class="nav-link">研究成果</a></li>
-                <li><a href="#participation" class="nav-link">研討會參與</a></li> 
-                <li><a href="#skills" class="nav-link">技能與經歷</a></li>
-                <li><a href="#projects" class="nav-link">個人專案</a></li> 
-                <li><a href="#certificates" class="nav-link">證照與獎項</a></li>
-                <li><a href="#contact" class="nav-link">聯絡我</a></li>
+            <ul class="nav-links">
+                <li><a href="#about">關於我</a></li>
+                <li><a href="#research">研究成果</a></li>
+                <li><a href="#skills">技能經歷</a></li>
+                <li><a href="#projects">個人專案</a></li>
+                <li><a href="#contact">聯絡我</a></li>
             </ul>
         </div>
     </nav>
@@ -373,7 +398,6 @@
                     <div class="hero-tags">
                         <span class="tag">#藥學</span><span class="tag">#基因體學</span>
                         <span class="tag">#生物資訊</span><span class="tag">#機器學習</span>
-                        <span class="tag">#青光眼 (POAG)</span><span class="tag">#男性不孕症</span>
                     </div>
                     <a href="#contact" class="btn btn-primary">聯絡我</a>
                 </div>
@@ -393,15 +417,114 @@
                 <h2 class="section-title">關於我</h2>
                 <div class="about-grid">
                     <div class="about-text">
-                        <p>我就讀於國防醫學大學藥學系 (2020-2026)，奠定了紮實的藥理學基礎。自大二時，我加入了黃攸娟副教授的實驗室 (2022-2025)，從事基因體學研究，專注於全外顯子定序 (WES) 分析與致病基因預測模型建立。</p>
-                        <p>在研究歷程中，我致力於結合生物資訊與機器學習方法，深入探討青光眼及男性不孕症的遺傳機制。</p>
+                        <p>我就讀於國防醫學大學藥學系 (2020-2026)，自大二時加入黃攸娟副教授實驗室，專注於全外顯子定序 (WES) 分析與致病基因預測模型建立。</p>
                         <ul class="about-list">
                             <li><strong>學歷:</strong> 國防醫學大學藥學系 (2020-2026)</li>
                             <li><strong>資格:</strong> 藥師第一階段國考及格</li>
-                            <li><strong>研究室:</strong> 黃攸娟副教授實驗室 (2022-2025)</li>
+                            <li><strong>研究計畫:</strong> 113年度國科會大專學生研究計畫</li>
                         </ul>
                     </div>
-                    <img src="178D6D78-9FA6-4251-A7D9-05CEB35D9CFC.JPG" alt="曾浩宸海報發表照片" class="about-image">
+                    <img src="178D6D78-9FA6-4251-A7D9-05CEB35D9CFC.JPG" alt="曾浩宸發表照片" class="about-image">
+                </div>
+            </div>
+        </section>
+
+        <section id="research" class="section">
+            <div class="container">
+                <h2 class="section-title">研究成果</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">2024年10月</div>
+                            <h3 class="timeline-title">A Comprehensive Genetic Study for Male Infertility</h3>
+                            <div class="timeline-role">第三作者</div>
+                            <p class="timeline-desc">發表於 2024 台灣生殖醫學會年會。</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">2024年8月</div>
+                            <h3 class="timeline-title">Activation of ROCK/MYLK Pathway in Ocular Hypertension</h3>
+                            <div class="timeline-role">第三作者</div>
+                            <p class="timeline-desc">發表於 2024 軍醫大會。</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">審查中</div>
+                            <h3 class="timeline-title">Exome-Based Machine Learning in POAG Families</h3>
+                            <div class="timeline-role">第一作者</div>
+                            <p class="timeline-desc">發表於 2025 北醫大臨床醫學研究所研討會。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="participation" class="section">
+            <div class="container">
+                <h2 class="section-title">研討會參與</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="IMG_9023.JPG" alt="研討會海報"><div class="gallery-caption">POAG 雙靶點抑制劑研究</div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="S__17702920.jpg" alt="APPS 團體照"><div class="gallery-caption">2024 亞太藥學年會 (APPS)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+            <div class="container">
+                <h2 class="section-title">技能與實習</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>生物資訊技能</h3>
+                        <ul class="skill-list">
+                            <li>CLC Genomics / IPA 分析</li>
+                            <li>機器學習 (Python)</li>
+                            <li>全外顯子定序 (WES) 分析</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>藥學實習</h3>
+                        <ul class="skill-list">
+                            <li>三軍總醫院 臨床藥學部</li>
+                            <li>順天堂藥廠 / 赫得藥局</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <div class="container">
+                <h2 class="section-title">個人專案</h2>
+                <div class="project-grid">
+                    <a href="#" class="project-item"><h3>門診/住院儲位查詢 App</h3><p>提升藥局工作效率，方便快速查詢藥品儲位。</p></a>
+                    <a href="#" class="project-item"><h3>智慧藥師 SOAP 產生器</h3><p>基於臨床指引，協助快速生成結構化 SOAP 筆記。</p></a>
+                    <a href="#" class="project-item"><h3>中藥材辨認練習題庫</h3><p>提供藥材圖片辨識練習，輔助記憶學習。</p></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="certificates" class="section">
+            <div class="container">
+                <h2 class="section-title">證照與獎項</h2>
+                <div class="cert-grid">
+                    <div class="cert-item"><img src="itp.jpg" alt="獎學金"><h4>TOEFL ITP 研究獎學金</h4></div>
+                    <div class="cert-item"><img src="Google_page-0001.jpg" alt="Gemini"><h4>Gemini Certified Educator</h4></div>
+                </div>
+                <div class="awards-list">
+                    <ul>
+                        <li>劉孔樂先生成績優良獎學金</li>
+                        <li>詹益欣教育長獎學金</li>
+                        <li>TOEIC 910分 / ALCPT 95分</li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -417,31 +540,15 @@
         </section>
     </main>
 
-    <footer class="footer">
-        <p>&copy; 2026 曾浩宸 (Hao Chen Tseng). All rights reserved.</p>
-    </footer>
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()"><img id="lightbox-img"></div>
 
     <script>
-        // 導覽列邏輯
-        const navToggle = document.getElementById('nav-toggle');
-        const navLinks = document.getElementById('nav-links');
-        navToggle.addEventListener('click', () => {
-            navToggle.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
-
-        // 平滑捲動
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const target = document.querySelector(link.getAttribute('href'));
-                if (target) {
-                    window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
-                    navToggle.classList.remove('active');
-                    navLinks.classList.remove('active');
-                }
-            });
-        });
+        function openLightbox(el) {
+            const img = el.querySelector('img');
+            document.getElementById('lightbox-img').src = img.src;
+            document.getElementById('lightbox').style.display = 'flex';
+        }
+        function closeLightbox() { document.getElementById('lightbox').style.display = 'none'; }
     </script>
 </body>
 </html>
