@@ -10,8 +10,8 @@
     
     <style>
         :root {
-            --primary-color: #0d47a1; /* 深藍色，源自國防醫學院徽章 */
-            --secondary-color: #b71c1c; /* 紅色，點綴 */
+            --primary-color: #0d47a1; /* 深藍色 */
+            --secondary-color: #b71c1c; /* 紅色 */
             --text-dark: #202124;
             --text-medium: #5f6368;
             --text-light: #f8f9fa;
@@ -28,9 +28,7 @@
             padding: 0;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Inter', 'Noto Sans TC', sans-serif;
@@ -85,9 +83,7 @@
             font-size: 0.95rem;
         }
 
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--primary-color);
-        }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary-color); }
 
         .nav-links a::after {
             content: '';
@@ -100,9 +96,7 @@
             transition: var(--transition);
         }
 
-        .nav-links a:hover::after, .nav-links a.active::after {
-            width: 100%;
-        }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
 
         .nav-toggle {
             display: none;
@@ -126,9 +120,7 @@
             padding: 0 20px;
         }
 
-        .section {
-            padding: 100px 0 70px;
-        }
+        .section { padding: 100px 0 70px; }
         
         .section-title {
             font-size: 2.5rem;
@@ -195,6 +187,28 @@
             font-weight: 500;
         }
 
+        /* Hero 動作區塊 (按鈕 + QR Code) */
+        .hero-cta-group {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .hero-qr {
+            width: 100px;
+            height: 100px;
+            background: white;
+            padding: 5px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+            object-fit: contain;
+        }
+
+        .hero-qr:hover { transform: scale(1.05); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+
         .hero-image {
             width: 100%;
             max-width: 320px;
@@ -236,16 +250,9 @@
             align-items: start;
         }
         
-        .about-text p {
-            font-size: 1.05rem;
-            color: var(--text-medium);
-            margin-bottom: 20px;
-        }
+        .about-text p { font-size: 1.05rem; color: var(--text-medium); margin-bottom: 20px; }
         
-        .about-list {
-            list-style: none;
-            margin-top: 25px;
-        }
+        .about-list { list-style: none; margin-top: 25px; }
         
         .about-list li {
             position: relative;
@@ -276,7 +283,7 @@
             box-shadow: var(--shadow);
         }
 
-        /* --- 研究成果 (Research Timeline) --- */
+        /* --- 研究成果 (Timeline) --- */
         #research { background: var(--bg-light); }
         
         .timeline {
@@ -331,7 +338,7 @@
         .timeline-title { font-size: 1.1rem; margin-bottom: 8px; color: var(--primary-color); }
         .timeline-role { font-size: 0.9rem; font-weight: 600; margin-bottom: 8px; }
 
-        /* --- 網格佈局 (Gallery, Skills, Projects, Certs) --- */
+        /* --- 網格佈局 --- */
         .grid-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -413,6 +420,7 @@
             .hero-content { grid-template-columns: 1fr; text-align: center; }
             .hero-image { order: -1; margin-bottom: 20px; }
             .hero-tags { justify-content: center; }
+            .hero-cta-group { justify-content: center; } /* 手機版按鈕與QR置中 */
             .about-grid { grid-template-columns: 1fr; }
             .timeline::before { left: 20px; }
             .timeline-item { width: 100%; padding-left: 50px; text-align: left; }
@@ -469,7 +477,12 @@
                         <span class="tag">#青光眼 (POAG)</span>
                         <span class="tag">#男性不孕症</span>
                     </div>
-                    <a href="#contact" class="btn btn-primary">與我聯繫</a>
+                    
+                    <div class="hero-cta-group">
+                        <a href="#contact" class="btn btn-primary">與我聯繫</a>
+                        <img src="qr.jpg" alt="掃描 QR Code" class="hero-qr" title="點擊放大" onclick="openLightbox(this)">
+                    </div>
+
                 </div>
                 <img src="S__17702918.jpg" alt="曾浩宸" class="hero-image">
             </div>
@@ -666,7 +679,7 @@
         });
 
         function openLightbox(element) {
-            const img = element.querySelector('img');
+            const img = element.tagName === 'IMG' ? element : element.querySelector('img');
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
             if (img) {
