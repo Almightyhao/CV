@@ -10,8 +10,8 @@
     
     <style>
         :root {
-            --primary-color: #0d47a1; /* 深藍色，源自國防醫學院徽章 */
-            --secondary-color: #b71c1c; /* 紅色，點綴 */
+            --primary-color: #0d47a1; /* 深藍色 */
+            --secondary-color: #b71c1c; /* 紅色 */
             --text-dark: #202124;
             --text-medium: #5f6368;
             --text-light: #f8f9fa;
@@ -40,7 +40,7 @@
             overflow-x: hidden;
         }
 
-        /* --- 導覽列 Navigation --- */
+        /* --- Navigation --- */
         .navbar {
             position: fixed;
             top: 0;
@@ -72,7 +72,7 @@
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 35px; /* Reduced gap slightly for more items */
+            gap: 35px;
         }
 
         .nav-links a {
@@ -82,7 +82,7 @@
             transition: var(--transition);
             position: relative;
             padding: 5px 0;
-            font-size: 0.95rem; /* Slightly smaller font size */
+            font-size: 0.95rem;
         }
 
         .nav-links a:hover, .nav-links a.active {
@@ -119,7 +119,7 @@
             transition: var(--transition);
         }
 
-        /* --- 主要容器 --- */
+        /* --- Global Container --- */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -127,7 +127,7 @@
         }
 
         .section {
-            padding-top: 100px; /* 70px navbar + 30px padding */
+            padding-top: 100px;
             padding-bottom: 70px;
         }
         
@@ -150,18 +150,16 @@
             border-radius: 2px;
         }
 
-        /* --- 英雄區域 (Hero) --- */
+        /* --- Hero Section --- */
         #hero {
             min-height: 90vh;
             display: flex;
             align-items: center;
             padding-top: 70px;
-            /* --- 修改這裡 --- */
             background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('background.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            /* ---------------- */
         }
 
         .hero-content {
@@ -200,6 +198,13 @@
             font-weight: 500;
         }
 
+        /* --- Hero Image & QR Overlay --- */
+        .hero-image-wrapper {
+            position: relative;
+            display: inline-block;
+            justify-self: center;
+        }
+
         .hero-image {
             width: 100%;
             max-width: 350px;
@@ -208,7 +213,39 @@
             object-fit: cover;
             border: 8px solid var(--bg-white);
             box-shadow: var(--shadow);
-            justify-self: center;
+        }
+
+        .qr-overlay {
+            position: absolute;
+            bottom: 15px;
+            right: 5px;
+            background: white;
+            padding: 8px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: var(--transition);
+            z-index: 10;
+        }
+
+        .qr-overlay:hover {
+            transform: scale(1.1) translateY(-5px);
+        }
+
+        .qr-small {
+            width: 75px;
+            height: 75px;
+            display: block;
+            border-radius: 4px;
+        }
+
+        .qr-overlay span {
+            font-size: 0.7rem;
+            color: var(--text-medium);
+            margin-top: 4px;
+            font-weight: 700;
         }
         
         .btn {
@@ -235,7 +272,7 @@
             box-shadow: 0 6px 16px rgba(13, 71, 161, 0.3);
         }
 
-        /* --- 關於我 (About) --- */
+        /* --- About Section --- */
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -293,7 +330,7 @@
             box-shadow: var(--shadow);
         }
 
-        /* --- 研究成果 (Research) --- */
+        /* --- Research Section --- */
         #research {
             background: var(--bg-light);
         }
@@ -393,14 +430,13 @@
             color: var(--text-medium);
         }
         
-        /* --- 研討會與國際參與 (Participation) --- */
+        /* --- Participation Section --- */
         #participation { 
             background: var(--bg-white); 
         }
         
         .gallery-grid {
             display: grid;
-             /* Adjusted minmax for 4 items */
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
         }
@@ -421,7 +457,7 @@
         
         .gallery-item img {
             width: 100%;
-            height: 300px; /* Slightly reduced height */
+            height: 300px;
             object-fit: cover;
             display: block;
         }
@@ -433,9 +469,9 @@
             right: 0;
             background: linear-gradient(transparent, rgba(0,0,0,0.8));
             color: white;
-            padding: 25px 15px 15px; /* Adjusted padding */
+            padding: 25px 15px 15px;
             font-weight: 500;
-            font-size: 0.9rem; /* Adjusted font size */
+            font-size: 0.9rem;
             opacity: 1;
             transition: var(--transition);
         }
@@ -444,7 +480,7 @@
             opacity: 1;
         }
 
-        /* --- 技能與經歷 (Skills & Experience) --- */
+        /* --- Skills Section --- */
         #skills {
             background: var(--bg-light);
         }
@@ -491,7 +527,7 @@
             top: -3px;
         }
         
-        /* --- 個人專案 (Projects) --- */
+        /* --- Projects Section --- */
         .project-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -532,14 +568,13 @@
             margin-bottom: 20px; 
         }
         
-        .project-item span { /* Style for the "前往專案" link text */
+        .project-item span {
             font-weight: 600;
             color: var(--primary-color);
             text-decoration: underline;
         }
 
-
-        /* --- 證照與獎項 (Certificates) --- */
+        /* --- Certificates Section --- */
         .cert-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -605,7 +640,7 @@
             font-size: 1.05rem;
         }
 
-        /* --- 聯絡我 (Contact) --- */
+        /* --- Contact Section --- */
         #contact {
             text-align: center;
             background: var(--primary-color);
@@ -651,7 +686,7 @@
             box-shadow: 0 6px 16px rgba(0,0,0,0.2);
         }
 
-        /* --- 頁尾 (Footer) --- */
+        /* --- Footer --- */
         .footer {
             text-align: center;
             padding: 30px 20px;
@@ -663,7 +698,7 @@
             font-size: 0.9rem;
         }
 
-        /* --- 回到頂部按鈕 --- */
+        /* --- Scroll to Top --- */
         .back-to-top {
             position: fixed;
             bottom: 20px;
@@ -694,7 +729,7 @@
             transform: translateY(0);
         }
 
-        /* --- 燈箱 (Lightbox) --- */
+        /* --- Lightbox --- */
         .lightbox {
             display: none;
             position: fixed;
@@ -727,18 +762,28 @@
             border: none;
         }
 
-        /* --- 響應式設計 (RWD) --- */
+        /* --- Responsive Design (RWD) --- */
         @media (max-width: 992px) {
             .hero-content {
                 grid-template-columns: 1fr;
                 text-align: center;
             }
             
-            .hero-image {
-                grid-row: 1; /* 圖片移到上方 */
+            .hero-image-wrapper {
+                grid-row: 1;
                 max-width: 300px;
                 height: 300px;
                 margin-bottom: 30px;
+            }
+
+            .hero-image {
+                max-width: 300px;
+                height: 300px;
+            }
+
+            .qr-small {
+                width: 60px;
+                height: 60px;
             }
             
             .hero-tags {
@@ -779,7 +824,7 @@
             .nav-links {
                 display: none;
                 position: absolute;
-                top: 70px; /* navbar 高度 */
+                top: 70px;
                 left: 0;
                 width: 100%;
                 background: white;
@@ -826,7 +871,7 @@
             }
         }
 
-        /* --- 列印樣式 (Print) --- */
+        /* --- Print Style --- */
         @media print {
             .navbar, .back-to-top, .contact-links, .btn, .project-item {
                 display: none !important;
@@ -864,7 +909,7 @@
             }
             
             .hero-image, .about-image, .gallery-item, .cert-item {
-                display: none; /* 節省墨水 */
+                display: none;
             }
             
             .timeline::before {
@@ -945,11 +990,15 @@
                         <span class="tag">#男性不孕症</span>
                     </div>
                     <a href="#contact" class="btn btn-primary">聯絡我</a>
-                        <div class="qr-container">
-                            <img src="qr.jpg" alt="QR Code" class="qr-code">
-                            <span>掃描聯繫</span>
                 </div>
-                <img src="S__17702918.jpg" alt="曾浩宸個人照片" class="hero-image">
+                
+                <div class="hero-image-wrapper">
+                    <img src="S__17702918.jpg" alt="曾浩宸個人照片" class="hero-image">
+                    <div class="qr-overlay">
+                        <img src="qr.jpg" alt="QR Code" class="qr-small">
+                        <span>掃描聯繫</span>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1231,18 +1280,16 @@
     </div>
 
     <script>
-        // --- 導覽列 & 錨點滾動 ---
+        // --- Navigation Logic ---
         const navToggle = document.getElementById('nav-toggle');
         const navLinks = document.getElementById('nav-links');
         const navLinkItems = document.querySelectorAll('.nav-link');
 
-        // 漢堡選單開關
         navToggle.addEventListener('click', () => {
             navToggle.classList.toggle('active');
             navLinks.classList.toggle('active');
         });
 
-        // 點擊連結後關閉漢堡選單
         navLinkItems.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -1250,20 +1297,19 @@
                 const targetSection = document.querySelector(targetId);
                 
                 if (targetSection) {
-                    const offsetTop = targetSection.offsetTop - 70; // 扣除導覽列高度
+                    const offsetTop = targetSection.offsetTop - 70;
                     window.scrollTo({
                         top: offsetTop,
                         behavior: 'smooth'
                     });
                 }
                 
-                // 關閉選單
                 navToggle.classList.remove('active');
                 navLinks.classList.remove('active');
             });
         });
 
-        // --- 回到頂部按鈕 ---
+        // --- Back to Top ---
         const backToTopButton = document.getElementById('back-to-top');
         
         window.addEventListener('scroll', () => {
@@ -1278,14 +1324,13 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // --- 燈箱 (Lightbox) ---
+        // --- Lightbox ---
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
 
         function openLightbox(element) {
-            // 檢查點擊的元素或其父元素是否為 <a> 連結
             if (element.tagName === 'A' || element.closest('a')) {
-                return; // 如果是連結，則不開啟燈箱，讓連結正常運作
+                return;
             }
 
             const img = element.querySelector('img');
@@ -1293,16 +1338,15 @@
                 lightboxImg.src = img.src;
                 lightboxImg.alt = img.alt;
                 lightbox.style.display = 'flex';
-                document.body.style.overflow = 'hidden'; // 禁止背景滾動
+                document.body.style.overflow = 'hidden';
             }
         }
 
         function closeLightbox() {
             lightbox.style.display = 'none';
-            document.body.style.overflow = 'auto'; // 恢復背景滾動
+            document.body.style.overflow = 'auto';
         }
         
-        // 點擊 Esc 鍵關閉燈箱
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 closeLightbox();
@@ -1312,19 +1356,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
